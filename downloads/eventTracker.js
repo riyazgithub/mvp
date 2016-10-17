@@ -1,11 +1,12 @@
 
-var timeToContact = 30 * 1000;
+var serverLocation = 'http://localhost:8000/';
+var timeToContact = 5 * 1000;
     // Firefox 1.0+
 var isFirefox = typeof InstallTrigger !== 'undefined';
     // Safari <= 9 "[object HTMLElementConstructor]" 
 var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
     // Edge 20+
-var isEdge = !isIE && !!window.StyleMedia;
+var isEdge = !!window.StyleMedia;
     // Chrome 1+
 var isChrome = !!window.chrome && !!window.chrome.webstore;
     // Blink engine detection
@@ -24,8 +25,7 @@ var browserInfo = {
   sizeDocW: document.width,
   sizeDocH: document.height,
   sizeInW: window.innerWidth,
-  sizeInH: innerHeight,
-  timestamp: position.timestamp
+  sizeInH: innerHeight
 };
 
 $.get( 'http://ipinfo.io', function (response) {
@@ -36,6 +36,9 @@ $.get( 'http://ipinfo.io', function (response) {
 
 var displayInfo = function() {
     // console.log('Info ', info);
+  $.post(serverLocation + 'api/webtraffic/info', browserInfo, function(data) {
+    console.log('Server Response ', data);
+  });
   console.log('Browser info ', browserInfo);
 
 };
@@ -51,5 +54,4 @@ $(window).blur(function() {
   console.log('Window in blur');
 });
 
-listenEvents();
 window.setInterval(displayInfo, timeToContact);
