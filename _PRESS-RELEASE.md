@@ -17,28 +17,29 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  Live Web-Site Analysis
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  Monitor your customers activity on your website in real time.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-
+  This app allows you to monitor your customers activity on websites in real time and take decisions based on the customer engagement with your website. It gives you current active/idle customers on your website and which page they view the most.
+  
 ## Problem ##
+  This helps business owners to identify what the customers need and improve/ ennhance their websites.
   > Describe the problem your product solves.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  My product gathers information about the clients browsing pattern and details about them like their relevant location and their system environment.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  This app will help website owners to take deicsions on making their website successful.
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  Just add a script (provided while signing up ) to your website and you are good to go from there.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  Live app helped me to identify my customers needs and improve my business.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  What are you waiting for ?? Signup and look at the magic.
