@@ -1,6 +1,6 @@
 var Q = require('q');
 var jwt = require('jwt-simple');
-var User = require('./webtrafficModel.js');
+var webTraffic = require('./webtrafficModel.js');
 
 module.exports = {
   addWebtrafficInfo: function(req, res, next) { 
