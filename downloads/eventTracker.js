@@ -22,8 +22,8 @@ var clientInfo = {
 
 var browserInfo = {
   domainName: window.location.hostname,
-  currentURL: window.location.pathname,
-  timeOpened: new Date(),
+  pathName: window.location.pathname,
+  startTime: new Date(),
   sizeInW: window.innerWidth,
   sizeInH: innerHeight
 };
@@ -47,26 +47,27 @@ $.get( 'https://ipinfo.io', function (response) {
 
 var displayInfo = function() {
     // console.log('Info ', info);
-  browserInfo = {
-    domainName: window.location.hostname,
-    currentURL: window.location.pathname,
-    timeOpened: new Date(),
-    sizeInW: window.innerWidth,
-    sizeInH: innerHeight,
-  };    
+  
+  browserInfo.domainName = window.location.hostname;
+  browserInfo.pathName = window.location.pathname;
+  browserInfo.sizeInW = window.innerWidth;
+  browserInfo.sizeInH = innerHeight;
+      
   $.post(serverLocation + 'api/webtraffic/info', browserInfo, function(data) {
-    console.log('Server Response browserInfo', data);
+    
   });
-  console.log('Browser info ', browserInfo);
+  console.log('Browser info ', browserInfo.activeTime);
 
 };
 $(window).focus(function() {
   browserInfo.focus = true;
+  browserInfo.startTime = new Date();
   console.log('Window in focus');
 });
 
 $(window).blur(function() {
   browserInfo.focus = false;
+  browserInfo.startTime = new Date();
   console.log('Window in blur');
 });
 

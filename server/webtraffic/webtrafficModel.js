@@ -21,7 +21,7 @@ var WebtrafficSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  currentURL: {
+  pathName: {
     type: String,
     required: false
   },
@@ -37,10 +37,15 @@ var WebtrafficSchema = new mongoose.Schema({
     type: Number,
     required: false
   },
-  time: {
+  startTime: {
     type: Date,
     required: false
+  },
+  timeSpent: {
+    type: Number,
+    required: false
   }
+
 });
 
 module.exports = mongoose.model('webTraffic', WebtrafficSchema);
