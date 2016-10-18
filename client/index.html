@@ -8,7 +8,7 @@
   <body>
   <div class="container" id='app-header-container'>
     <img alt="Small_icon" id="app-header-icon" src="./assets/Binoculars_60.png">
-    <h1 id="app-header-title"> Live Web </h1>
+    <h1 id="app-header-title"> Live Web Reporting</h1>
   </div>
 
   <section class="hidden" id="liveNotify">
@@ -16,14 +16,14 @@
   <div class="visit">
   <a href="#" action="visit-store" target="_blank"><img alt="Purple_store" src="./assets/Home_55.png"></a></div>
   <h2 id='live-notify-header1'>
-  <strong id='live-notify-header'>Welcome to your Live Web page!</strong>
+  <strong id='live-notify-header'>Welcome to your Live Web Reporting page!</strong>
   </h2>  
   </section>
-  <section class="ng-scope" id="ng-app" style="min-height: 1000px;">
-    <ul id="navList" ng-controller="tabsController" ng-style="{height: 46 * (num_tabs + 1) + &#39;px&#39;}" class="ng-scope" style="height: 184px; width:250px">
-<div id='feeds-header'>
-  Live Customer Feed
-</div>
+  <section class="ng-scope" id="ng-app" ng-controller="tabsController" style="min-height: 1000px;">
+  <div id= 'livefeed'>
+  <ul id="navList" ng-style="{height: 46 * (num_tabs + 1) + &#39;px&#39;}" class="ng-scope" style="height: 184px; width:250px">
+  <div id='feeds-header'>
+  Live Customer Feed</div>
 <hr/>
 </a>
 </li>
@@ -31,8 +31,16 @@
   <div id='feed' ng-click='getCustomerInfo(feed.ip)'> {{ feed.displayString }}</div>
   <hr/>
 </div>
+    
+</div>
 <div id="liveBody" >
-  Customer info
+  <div id="customer-info" ng-show='showCustomerInfo'>
+    <div class="CustomerInfo">IP: {{ customerInfo.ip }}</div>
+    <div class="CustomerInfo">City: {{ customerInfo.city }} Region: {{ customerInfo.region }}</div>
+    <div class="CustomerInfo">Browser: {{ customerInfo.browser }}</div>
+    <div class="CustomerInfo">Machine: {{ customerInfo.machine }}</div>
+    <div class="CustomerInfo">Most Visited Page: {{ customerInfo.mvp }}</div>
+  </div>
 </div>
 <!-- ngRepeat: tab in tabs | orderTabs | limitTo:num_tabs -->
 </ul>
@@ -49,6 +57,7 @@
 
     <script src="app/services.js"></script>
     <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="lib/underscore-min.js"></script>
     <script src="app/app.js"></script>
   </body>
 </html>

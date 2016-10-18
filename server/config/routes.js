@@ -11,5 +11,6 @@ module.exports = function (app, express) {
   app.get('/api/webtraffic/activeUsers', webtrafficController.getActiveUsers);
   app.get('/api/webtraffic/inactiveUsers', webtrafficController.getInActiveUsers);
   app.get('/api/webtraffic/usersBuying', webtrafficController.getUsersBuying);
+  app.get('/api/webtraffic/mvp', webtrafficController.getMostVisitedPageByCustomer);
 
 };

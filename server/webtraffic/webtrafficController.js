@@ -43,8 +43,8 @@ module.exports = {
   getActiveUsers: function(req, res, next) {
     var queryDate = new Date();
     queryDate.setHours(queryDate.getHours() - 2);
-    Webtraffic.find({ focus: true }, {ip: 1, pathName: 1, _id: 0})
-    .sort('-date').exec(function(err, docs) {
+    Webtraffic.find({}, {ip: 1, pathName: 1, startTime: 1, _id: 0})
+    .sort('-startTime').exec(function(err, docs) {
       if (err) {
         console.log('Error thrown while getting getInActiveUsers ', err);
       } else {
@@ -95,6 +95,22 @@ module.exports = {
       } else {
         res.send(docs);
       }
+    });
+
+  },
+  getMostVisitedPageByCustomer: function(req, res, next) {
+    Webtraffic.find({}, {ip: 1, pathName: 1, timeSpent: 1, _id: 0})
+    .sort('timeSpent').exec(function(err, docs) {
+
+      if (err) {
+        console.log('Error thrown while getting getMostVisitedPageByCustomer ', err);
+      } else {
+        docs = _.uniq(docs, function(item, key, ip) { 
+          return item.ip;
+        });
+        res.send(docs);
+      }
+
     });
 
   }
