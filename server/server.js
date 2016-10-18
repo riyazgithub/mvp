@@ -20,7 +20,7 @@ require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
 
 // start listening to requests on port 8000
-//app.listen(8000);
-console.log('Server is up at 8000');
+app.listen(8000);
+console.log('Server is up at 8000 and 8001');
 // export our app for testing and flexibility, required by index.js
 module.exports = app;

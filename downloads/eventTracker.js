@@ -13,11 +13,10 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 var isBlink = (isChrome || isOpera) && !!window.CSS;
 
 var clientInfo = {
-  firefox: isFirefox,
-  safari: isSafari,
-  chrome: isChrome,
+  browser: 'firefox:' + isFirefox + 'safari:' + isSafari + 'chrome:' + isChrome,
   language: window.navigator.language,
   machine: window.navigator.appVersion,
+  focus: true
 };
 
 var browserInfo = {
@@ -37,10 +36,11 @@ $.get( 'https://ipinfo.io', function (response) {
   browserInfo.ip = response.ip;
   clientInfo.city = response.city;
   clientInfo.region = response.region;
+  clientInfo.timeOfVisit = new Date();
   clientInfo.location = 'Location: ' + response.city + ', ' + response.region;
   console.log('Recieved Response');
   $.post(serverLocation + 'api/customer/info', clientInfo, function(data) {
-    console.log('Server Response clientInfo ', data);
+    console.log('Server Response clientInfo ', data, clientInfo);
   });
 
 }, 'jsonp');

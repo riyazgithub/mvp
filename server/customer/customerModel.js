@@ -40,6 +40,10 @@ var CustomerSchema = new mongoose.Schema({
   pageVisits: {
     type: Number,
     required: false
+  },
+  timeOfVisit: {
+    type: Date,
+    required: false
   }
 	}
 );
