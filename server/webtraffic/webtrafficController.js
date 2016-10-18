@@ -1,6 +1,10 @@
 var Q = require('q');
 var jwt = require('jwt-simple');
 var Webtraffic = require('./webtrafficModel.js');
+var Customer = require('./../customer/customerModel.js');
+var findAllCustomers = Q.nbind(Customer.find, Customer);
+
+var _ = require('underscore');
 
 var findWebtrafficInfo = Q.nbind(Webtraffic.findOne, Webtraffic);
 var createWebtraffic = Q.nbind(Webtraffic.create, Webtraffic);
@@ -37,16 +41,46 @@ module.exports = {
     res.send('Web Traffic information updated !!');
   },
   getActiveUsers: function(req, res, next) {
-    Webtraffic.find({ focus: true }, {ip: 1, _id: 0}).sort('-date').exec(function(err, docs) {
+    var queryDate = new Date();
+    queryDate.setHours(queryDate.getHours() - 2);
+    Webtraffic.find({ focus: true }, {ip: 1, pathName: 1, _id: 0})
+    .sort('-date').exec(function(err, docs) {
       if (err) {
         console.log('Error thrown while getting getInActiveUsers ', err);
       } else {
-        res.send(docs);
+        // we gotto parse the result before sending them out
+        docs = _.uniq(docs, function(item, key, ip) { 
+          return item.ip;
+        });
+        findAllCustomers({})
+        .then(function(customers) {
+          if (customers) {
+            var responseString = [];
+            _.each(docs, function(doc) {
+              var findCustomer = _.find(customers, function(customer) {
+                return doc.ip === customer.ip;
+              });
+              var pageName = doc.pathName.slice('1');
+              pageName = pageName || 'Home';
+              responseString.push({displayString: 'A customer from ' + findCustomer.city + ', ' + findCustomer.region + ' is viewing your ' + pageName + ' page', ip: findCustomer.ip});
+            });
+            res.send(responseString);
+          } else {
+            res.send([]);
+          }
+        })
+        .catch(function(err) {
+          console.log('Error thrown ', err);
+        });
       }
     });
   },
   getInActiveUsers: function(req, res, next) {
-    Webtraffic.find({ focus: false }, {ip: 1, _id: 0}).sort('-date').exec(function(err, docs) {
+    var queryDate = new Date();
+    queryDate.setHours(queryDate.getHours() - 2);
+    Webtraffic.find({ focus: false }, {ip: 1, _id: 0})
+    .where('startTime').gt(queryDate)
+    .sort('-date').exec(function(err, docs) {
       if (err) {
         console.log('Error thrown while getting getInActiveUsers ', err);
       } else {
