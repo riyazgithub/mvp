@@ -11,7 +11,8 @@ module.exports = {
     findCustomer({ ip: customerInfo.ip })
     .then(function(customer) {
       if (customer) {
-        console.log('Update Customer Page Visit here ', customerInfo);
+        customer.pageVisits = customer.pageVisits + 1;
+        customer.save();
       } else {
         createCustomer({
           ip: customerInfo.ip,
@@ -20,7 +21,7 @@ module.exports = {
           browser: 'firefox:' + customerInfo.firefox + 'chrome:' + customerInfo.chrome + 'safari' + customerInfo.safari,
           machine: customerInfo.machine,
           language: customerInfo.language,
-          pageVisits: 0
+          pageVisits: 1
 
         });
       }

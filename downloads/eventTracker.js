@@ -1,5 +1,5 @@
 
-var serverLocation = 'http://localhost:8000/';
+var serverLocation = 'https://localhost:8001/';
 var timeToContact = 5 * 1000;
     // Firefox 1.0+
 var isFirefox = typeof InstallTrigger !== 'undefined';
@@ -32,7 +32,7 @@ var browserInfo = {
 // Kansas 199.87.55.66
 //sunnyvale 199.87.78.66
 
-$.get( 'http://ipinfo.io', function (response) {
+$.get( 'https://ipinfo.io', function (response) {
   clientInfo.ip = response.ip;
   browserInfo.ip = response.ip;
   clientInfo.city = response.city;
