@@ -36,18 +36,26 @@ section#liveNotify {
     position: absolute;
 }
 #liveBody {
-  flex: 1;
+  
   padding-right: 2cm;
 }
 #customer-info {
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    margin-top: -50px;
-    margin-left: -50px;
-    width: 200px;
-    height: 100px;
-}​
+
+  position: absolute; left: 70%; 
+
+    margin-top: 50px;
+    margin-right:50px;
+  width: 70%; 
+  bottom: 30;
+      }​
+
+#browsing-pattern {
+  flex: 1;
+  position: absolute;
+  margin-top: 50px;
+  margin-left: -250px;
+  width: 250px;
+  height: 100px;
 }
 
 /*.container {

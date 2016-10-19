@@ -101,7 +101,6 @@ module.exports = {
   getMostVisitedPageByCustomer: function(req, res, next) {
     Webtraffic.find({}, {ip: 1, pathName: 1, timeSpent: 1, _id: 0})
     .sort('timeSpent').exec(function(err, docs) {
-
       if (err) {
         console.log('Error thrown while getting getMostVisitedPageByCustomer ', err);
       } else {
@@ -113,7 +112,20 @@ module.exports = {
 
     });
 
+  },
+  getWebtrafficInTheLastDay: function(req, res, next) {
+    Webtraffic.find({focus: true})
+    .exec(function(err, docs) {
+      if (err) {
+        console.log('Error thrown while getting getMostVisitedPageByCustomer ', err);
+      } else {
+        console.log('Before ', docs.length);
+        res.send(docs);
+      }
+
+    });
   }
+
 
 
 
