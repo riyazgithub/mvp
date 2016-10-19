@@ -17,13 +17,13 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  Live Web-Site Analysis
+  Live Web Reporting
 
 ## Sub-Heading ##
   Monitor your customers activity on your website in real time.
 
 ## Summary ##
-  This app allows you to monitor your customers activity on websites in real time and take decisions based on the customer engagement with your website. It gives you current active/idle customers on your website and which page they view the most.
+  This app allows you to monitor your customers activity on websites in real time and take decisions based on the customer engagement with your website. It gives you current active customers on your website and which page they view the most.
   
 ## Problem ##
   This helps business owners to identify what the customers need and improve/ ennhance their websites.
