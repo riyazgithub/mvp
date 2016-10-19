@@ -99,5 +99,5 @@ app.controller ('tabsController', function($scope, activeUserService, $interval,
     });
 
   };
-  $interval( updateFeed, 30 * 1000);
+  $interval( updateFeed, 10 * 1000);
 });
